@@ -26,7 +26,7 @@
     var APIKey = "166a433c57516f51dfab1f7edaed8413";
     // Here we are building the URL we need to query the database
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-      "q=Austin,TX&units=imperial&appid=" + APIKey;
+      "q=Austin,Texas&units=imperial&appid=" + APIKey;
     // Here we run our AJAX call to the OpenWeatherMap API
     $.ajax({
         url: queryURL,
@@ -57,7 +57,7 @@
         {
           $("#weather_img").attr("src", "images/snow_rain.png")
         }
-        else if (response.weather["0"].id < 700 || response.weather["0"].id == 711)
+        else if (response.weather["0"].id < 700)
         {
           $("#weather_img").attr("src", "images/snow.png")
         }
@@ -77,9 +77,17 @@
         {
           $("#weather_img").attr("src", "images/tumbleweed.png")
         }
-        else if (response.weather[0].id < 801)
+        else if (response.weather[0].id == 800)
+        {
+          $("#weather_img").attr("src", "images/sun.png")
+        }
+        else if (response.weather[0].id > 800)
         {
           $("#weather_img").attr("src", "images/clouds.png")
+        }
+        else
+        {
+          $("#weather_img").attr("src", "images/sun.png")
         }
         //still need volcano.  Well, do I?
 
